@@ -4,7 +4,7 @@ A complete appointment booking system for [FilamentPHP](https://filamentphp.com)
 
 > **v2.x** — Requires PHP 8.2+, Laravel 11.28+/12, and FilamentPHP 4 or 5.
 >
-> For FilamentPHP 3 support, use [v1.x](https://github.com/xavicabot/filament-appointments/tree/main) (`composer require xavicabot/filament-appointments:^1.0`).
+> For FilamentPHP 3 support, use [v1.x](https://github.com/xavicabot/filament-appointments/tree/1.x) (`composer require xavicabot/filament-appointments:^1.0`).
 
 ---
 
