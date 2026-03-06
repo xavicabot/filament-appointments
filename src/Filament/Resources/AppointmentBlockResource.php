@@ -17,7 +17,7 @@ class AppointmentBlockResource extends Resource
 {
     protected static ?string $model = AppointmentBlock::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-no-symbol';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-no-symbol';
 
     public static function getNavigationGroup(): ?string
     {

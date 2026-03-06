@@ -15,7 +15,7 @@ class AppointmentRuleResource extends Resource
 {
     protected static ?string $model = AppointmentRule::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clock';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-clock';
 
     public static function getNavigationGroup(): ?string
     {

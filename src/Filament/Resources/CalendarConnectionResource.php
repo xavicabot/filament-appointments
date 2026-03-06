@@ -19,7 +19,7 @@ class CalendarConnectionResource extends Resource
 {
     protected static ?string $model = CalendarConnection::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-link';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-link';
 
     public static function getNavigationGroup(): ?string
     {
