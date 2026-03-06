@@ -80,10 +80,11 @@ class CalendarConnectionResource extends Resource
                 Tables\Columns\TextColumn::make('status')
                     ->label(__('filament-appointments::messages.calendar.status'))
                     ->badge()
-                    ->colors([
-                        'success' => ['connected'],
-                        'warning' => ['disconnected'],
-                    ]),
+                    ->color(fn (string $state): string => match ($state) {
+                        'connected' => 'success',
+                        'disconnected' => 'warning',
+                        default => 'gray',
+                    }),
                 Tables\Columns\TextColumn::make('expires_at')
                     ->label(__('filament-appointments::messages.calendar.expires_at'))
                     ->dateTime()

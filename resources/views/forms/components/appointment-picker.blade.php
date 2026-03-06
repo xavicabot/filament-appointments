@@ -9,7 +9,7 @@
             open: false,
             loading: false,
             slots: [],
-            selected: $wire.$entangle('{{ $getStatePath() }}', false),
+            selected: $wire.entangle('{{ $getStatePath() }}'),
             date: '',
             ownerType: @js($owner?->type),
             ownerId: @js($owner?->id),

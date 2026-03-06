@@ -1,17 +1,17 @@
 {
   "name": "xavicabot/filament-appointments",
-  "description": "FilamentPHP 3 Appointment Picker (Tucalendi-style) + Admin resources + Google Calendar availability sync",
+  "description": "FilamentPHP 4/5 Appointment Picker (Tucalendi-style) + Admin resources + Google Calendar availability sync",
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": "^8.1",
-    "filament/filament": "^3.0",
-    "illuminate/support": "^10.0|^11.0|^12.0",
+    "php": "^8.2",
+    "filament/filament": "^4.0|^5.0",
+    "illuminate/support": "^11.28|^12.0",
     "google/apiclient": "^2.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^10.5",
-    "orchestra/testbench": "^8.0|^9.0|^10.0",
+    "orchestra/testbench": "^9.0|^10.0",
     "mockery/mockery": "^1.6"
   },
   "autoload": {

@@ -5,12 +5,13 @@ namespace XaviCabot\FilamentAppointments\Filament\Resources\CalendarConnectionRe
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class CalendarSourcesRelationManager extends RelationManager
 {
     protected static string $relationship = 'calendarSources';
 
-    public static function getTitle($ownerRecord, string $pageClass): string
+    public static function getTitle(Model $ownerRecord, string $pageClass): string
     {
         return __('filament-appointments::messages.calendar.sources');
     }

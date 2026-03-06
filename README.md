@@ -1,8 +1,10 @@
 # Filament Appointments
 
-A complete appointment booking system for [FilamentPHP 3](https://filamentphp.com). Includes a visual time slot picker, weekly schedule management, manual blocks, booking with double-booking prevention, email confirmations, Google Calendar busy-time sync, and automatic Google Meet link generation.
+A complete appointment booking system for [FilamentPHP](https://filamentphp.com). Includes a visual time slot picker, weekly schedule management, manual blocks, booking with double-booking prevention, email confirmations, Google Calendar busy-time sync, and automatic Google Meet link generation.
 
-> Requires PHP 8.1+, Laravel 10/11/12, and FilamentPHP 3.
+> **v2.x** — Requires PHP 8.2+, Laravel 11.28+/12, and FilamentPHP 4 or 5.
+>
+> For FilamentPHP 3 support, use [v1.x](https://github.com/xavicabot/filament-appointments/tree/main) (`composer require xavicabot/filament-appointments:^1.0`).
 
 ---
 
