@@ -3,8 +3,9 @@
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
@@ -22,15 +23,15 @@ class AppointmentRuleResource extends Resource
         return __('filament-appointments::messages.nav_group');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
-                Forms\Components\Section::make(__('filament-appointments::messages.owner'))
+                Section::make(__('filament-appointments::messages.owner'))
                     ->description(__('filament-appointments::messages.select_agent'))
                     ->schema(static::ownerFormFields())
                     ->columns(2),
-                Forms\Components\Section::make(__('filament-appointments::messages.rules.schedule'))
+                Section::make(__('filament-appointments::messages.rules.schedule'))
                     ->description(__('filament-appointments::messages.rules.schedule_description'))
                     ->schema([
                         Forms\Components\CheckboxList::make('weekdays')

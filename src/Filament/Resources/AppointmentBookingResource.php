@@ -3,9 +3,10 @@
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
 use Filament\Infolists;
-use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use XaviCabot\FilamentAppointments\Filament\Resources\AppointmentBookingResource\Pages;
@@ -109,11 +110,11 @@ class AppointmentBookingResource extends Resource
             ]);
     }
 
-    public static function infolist(Infolist $infolist): Infolist
+    public static function infolist(Schema $infolist): Schema
     {
         return $infolist
             ->schema([
-                Infolists\Components\Section::make(__('filament-appointments::messages.bookings.details'))
+                Section::make(__('filament-appointments::messages.bookings.details'))
                     ->schema([
                         Infolists\Components\TextEntry::make('date')
                             ->label(__('filament-appointments::messages.date'))
@@ -140,16 +141,16 @@ class AppointmentBookingResource extends Resource
                     ])
                     ->columns(2),
 
-                Infolists\Components\Section::make(__('filament-appointments::messages.owner'))
+                Section::make(__('filament-appointments::messages.owner'))
                     ->description(__('filament-appointments::messages.select_agent'))
                     ->schema(static::ownerInfolistEntries())
                     ->columns(2),
 
-                Infolists\Components\Section::make(__('filament-appointments::messages.bookings.client'))
+                Section::make(__('filament-appointments::messages.bookings.client'))
                     ->schema(static::clientInfolistEntries())
                     ->columns(2),
 
-                Infolists\Components\Section::make(__('filament-appointments::messages.bookings.google_calendar'))
+                Section::make(__('filament-appointments::messages.bookings.google_calendar'))
                     ->schema([
                         Infolists\Components\TextEntry::make('metadata.meet_link')
                             ->label(__('filament-appointments::messages.bookings.meet_link'))
@@ -159,7 +160,7 @@ class AppointmentBookingResource extends Resource
                             ->placeholder(__('filament-appointments::messages.bookings.no_meet_link')),
                     ]),
 
-                Infolists\Components\Section::make(__('filament-appointments::messages.bookings.metadata'))
+                Section::make(__('filament-appointments::messages.bookings.metadata'))
                     ->schema([
                         Infolists\Components\KeyValueEntry::make('metadata')
                             ->label(__('filament-appointments::messages.bookings.metadata')),

@@ -3,9 +3,10 @@
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use XaviCabot\FilamentAppointments\Models\AppointmentBlock;
@@ -24,15 +25,15 @@ class AppointmentBlockResource extends Resource
         return __('filament-appointments::messages.nav_group');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
-                Forms\Components\Section::make(__('filament-appointments::messages.owner'))
+                Section::make(__('filament-appointments::messages.owner'))
                     ->description(__('filament-appointments::messages.select_agent'))
                     ->schema(static::ownerFormFields())
                     ->columns(2),
-                Forms\Components\Section::make(__('filament-appointments::messages.blocks.block'))
+                Section::make(__('filament-appointments::messages.blocks.block'))
                     ->description(__('filament-appointments::messages.blocks.block_description'))
                     ->schema([
                         Forms\Components\DatePicker::make('date')

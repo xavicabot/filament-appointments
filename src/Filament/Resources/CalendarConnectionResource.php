@@ -3,9 +3,10 @@
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use XaviCabot\FilamentAppointments\Filament\Resources\CalendarConnectionResource\Pages;
@@ -26,11 +27,11 @@ class CalendarConnectionResource extends Resource
         return __('filament-appointments::messages.nav_group');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $form): Schema
     {
         return $form
             ->schema([
-                Forms\Components\Section::make(__('filament-appointments::messages.calendar.connection'))
+                Section::make(__('filament-appointments::messages.calendar.connection'))
                     ->schema([
                         Forms\Components\TextInput::make('user_id')
                             ->label(__('filament-appointments::messages.calendar.user_id'))
