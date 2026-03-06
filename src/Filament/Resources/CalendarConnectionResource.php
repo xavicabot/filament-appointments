@@ -2,6 +2,7 @@
 
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -97,7 +98,7 @@ class CalendarConnectionResource extends Resource
             ])
             ->filters([])
             ->headerActions([
-                Tables\Actions\Action::make('connect_google')
+                Actions\Action::make('connect_google')
                     ->label(__('filament-appointments::messages.calendar.connect_google'))
                     ->icon('heroicon-o-arrow-top-right-on-square')
                     ->form(static::connectGoogleFormFields())
@@ -108,8 +109,8 @@ class CalendarConnectionResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('sync_calendars')
+                Actions\ViewAction::make(),
+                Actions\Action::make('sync_calendars')
                     ->label(__('filament-appointments::messages.calendar.sync'))
                     ->icon('heroicon-o-arrow-path')
                     ->requiresConfirmation()
@@ -131,7 +132,7 @@ class CalendarConnectionResource extends Resource
                                 ->send();
                         }
                     }),
-                Tables\Actions\Action::make('disconnect')
+                Actions\Action::make('disconnect')
                     ->label(__('filament-appointments::messages.calendar.disconnect'))
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
@@ -148,8 +149,8 @@ class CalendarConnectionResource extends Resource
                     }),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

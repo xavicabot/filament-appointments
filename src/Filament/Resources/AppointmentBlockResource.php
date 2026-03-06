@@ -2,6 +2,7 @@
 
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
+use Filament\Actions;
 use Filament\Forms;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -101,9 +102,9 @@ class AppointmentBlockResource extends Resource
                     }),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make()
+                Actions\CreateAction::make()
                     ->label(__('filament-appointments::messages.blocks.new')),
-                Tables\Actions\Action::make('sync_google')
+                Actions\Action::make('sync_google')
                     ->label(__('filament-appointments::messages.blocks.sync_google'))
                     ->icon('heroicon-o-arrow-path')
                     ->requiresConfirmation()
@@ -144,14 +145,14 @@ class AppointmentBlockResource extends Resource
                     }),
             ])
             ->actions([
-                Tables\Actions\EditAction::make()
+                Actions\EditAction::make()
                     ->visible(fn (AppointmentBlock $record): bool => ($record->source ?? 'manual') === 'manual'),
-                Tables\Actions\DeleteAction::make()
+                Actions\DeleteAction::make()
                     ->visible(fn (AppointmentBlock $record): bool => ($record->source ?? 'manual') === 'manual'),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ])
             ->checkIfRecordIsSelectableUsing(

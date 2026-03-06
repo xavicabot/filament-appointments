@@ -2,6 +2,7 @@
 
 namespace XaviCabot\FilamentAppointments\Filament\Resources;
 
+use Filament\Actions;
 use Filament\Infolists;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -91,8 +92,8 @@ class AppointmentBookingResource extends Resource
                 ...static::ownerTableFilter(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\Action::make('cancel')
+                Actions\ViewAction::make(),
+                Actions\Action::make('cancel')
                     ->label(__('filament-appointments::messages.bookings.cancel'))
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
