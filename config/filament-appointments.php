@@ -50,4 +50,23 @@ return [
     'google' => [
         'cache_ttl_seconds' => 120,
     ],
+
+    /**
+     * The Eloquent model that represents the client who books appointments.
+     * If null, falls back to owner_model.
+     * The model should use the HasBookings trait.
+     */
+    'client_model' => null,
+
+    /**
+     * The attribute on the client model to display as secondary label (e.g. 'email').
+     */
+    'client_label' => 'email',
+
+    /**
+     * Filament Resource FQCN for the client model.
+     * If set, client names in the bookings list will link to the resource's view page.
+     * Example: App\Filament\Resources\UserResource::class
+     */
+    'client_resource' => null,
 ];

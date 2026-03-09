@@ -225,6 +225,49 @@ class AppointmentBookingResource extends Resource
 
     protected static function clientTableColumns(): array
     {
+        $clientModel = config('filament-appointments.client_model')
+            ?? config('filament-appointments.owner_model');
+
+        if ($clientModel) {
+            $clientResource = config('filament-appointments.client_resource');
+
+            return [
+                Tables\Columns\TextColumn::make('client_id')
+                    ->label(__('filament-appointments::messages.bookings.client_name'))
+                    ->formatStateUsing(function ($state) use ($clientModel) {
+                        $client = $clientModel::find($state);
+
+                        if (! $client) {
+                            return $state;
+                        }
+
+                        return method_exists($client, 'getNameForBooking')
+                            ? $client->getNameForBooking()
+                            : ($client->name ?? $state);
+                    })
+                    ->description(function ($record) use ($clientModel) {
+                        $client = $clientModel::find($record->client_id);
+
+                        if (! $client) {
+                            return null;
+                        }
+
+                        return method_exists($client, 'getEmailForBooking')
+                            ? $client->getEmailForBooking()
+                            : ($client->email ?? null);
+                    })
+                    ->url(function ($record) use ($clientResource) {
+                        if (! $clientResource) {
+                            return null;
+                        }
+
+                        return $clientResource::getUrl('view', ['record' => $record->client_id]);
+                    })
+                    ->sortable()
+                    ->searchable(),
+            ];
+        }
+
         return [
             Tables\Columns\TextColumn::make('client_type')
                 ->label(__('filament-appointments::messages.bookings.client_type'))
@@ -280,6 +323,52 @@ class AppointmentBookingResource extends Resource
 
     protected static function clientInfolistEntries(): array
     {
+        $clientModel = config('filament-appointments.client_model')
+            ?? config('filament-appointments.owner_model');
+
+        if ($clientModel) {
+            $clientResource = config('filament-appointments.client_resource');
+
+            $entries = [
+                Infolists\Components\TextEntry::make('client_id')
+                    ->label(__('filament-appointments::messages.bookings.client_name'))
+                    ->formatStateUsing(function ($state) use ($clientModel) {
+                        $client = $clientModel::find($state);
+
+                        if (! $client) {
+                            return $state;
+                        }
+
+                        return method_exists($client, 'getNameForBooking')
+                            ? $client->getNameForBooking()
+                            : ($client->name ?? $state);
+                    }),
+                Infolists\Components\TextEntry::make('client_id')
+                    ->label(__('filament-appointments::messages.bookings.client_email'))
+                    ->formatStateUsing(function ($state) use ($clientModel) {
+                        $client = $clientModel::find($state);
+
+                        if (! $client) {
+                            return null;
+                        }
+
+                        return method_exists($client, 'getEmailForBooking')
+                            ? $client->getEmailForBooking()
+                            : ($client->email ?? null);
+                    }),
+            ];
+
+            if ($clientResource) {
+                $entries[] = Infolists\Components\TextEntry::make('client_id')
+                    ->label('')
+                    ->formatStateUsing(fn () => __('filament-appointments::messages.bookings.view_client'))
+                    ->url(fn ($record) => $clientResource::getUrl('view', ['record' => $record->client_id]))
+                    ->color('primary');
+            }
+
+            return $entries;
+        }
+
         return [
             Infolists\Components\TextEntry::make('client_type')
                 ->label(__('filament-appointments::messages.bookings.client_type')),
